@@ -1,8 +1,10 @@
+import { Container, Heading } from "@chakra-ui/layout";
+
 function App() {
   return (
-    <div className="App">
-      <h1>Hello</h1>
-    </div>
+    <Container className="App">
+      <Heading as="h1">Hello</Heading>
+    </Container>
   );
 }
 
