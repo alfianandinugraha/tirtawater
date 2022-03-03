@@ -1,10 +1,12 @@
+import DataTable from "@/components/data-table";
+import { datasetColumns } from "@/data/columns";
+import dataset from "@/data/dataset";
 import DashboardLayout from "@/layouts/dashboard";
-import { Box } from "@chakra-ui/layout";
 
 const DatasetPage = () => {
   return (
     <DashboardLayout title="Dataset">
-      <Box>Hello</Box>
+      <DataTable data={dataset} columns={datasetColumns} />
     </DashboardLayout>
   );
 };
