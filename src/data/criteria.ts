@@ -5,7 +5,7 @@ enum attribute {
 
 const criteriaWP = [
   {
-    criteria: "tempature",
+    criteria: "temprature",
     attribute: attribute.BENEFIT,
     weight: 2,
   },

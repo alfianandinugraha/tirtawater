@@ -49,7 +49,10 @@ const useWeightProduct = () => {
 
     const newNormalizeData = dataset.map((item) => {
       const criteria: Record<string, number> = {
-        tempature: Math.pow(item.temprature, normalizeDataObj.tempature.value),
+        temprature: Math.pow(
+          item.temprature,
+          normalizeDataObj.temprature.value
+        ),
         turbidity: Math.pow(item.turbidity, normalizeDataObj.turbidity.value),
         solid: Math.pow(item.solid, normalizeDataObj.solid.value),
         distance: Math.pow(item.distance, normalizeDataObj.distance.value),
@@ -62,7 +65,7 @@ const useWeightProduct = () => {
 
     let newRankData = newNormalizeData.map<RankRiverDataProps>((item) => {
       const criteria: Record<string, number> = {
-        tempature: item.temprature,
+        temprature: item.temprature,
         turbidity: item.turbidity,
         solid: item.solid,
         distance: item.distance,
