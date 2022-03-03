@@ -6,14 +6,12 @@ import {
   rankingRiverColumns,
 } from "@/data/columns/product-weight";
 import { attribute, criteriaWP } from "@/data/criteria";
+import useDataset from "@/store/use-dataset";
 import { useEffect, useState } from "react";
 import { River } from "type";
 
-type UseWeightProductProps = {
-  dataset: River[];
-};
-
-const useWeightProduct = (props: UseWeightProductProps) => {
+const useWeightProduct = () => {
+  const dataset = useDataset((store) => store.rivers);
   const [calculateWeightData, setCalculateWeightData] = useState<
     WeightDataProps[]
   >([]);
@@ -49,7 +47,7 @@ const useWeightProduct = (props: UseWeightProductProps) => {
       normalizeDataObj[item.criteria] = { ...item };
     });
 
-    const newNormalizeData = props.dataset.map((item) => {
+    const newNormalizeData = dataset.map((item) => {
       const criteria: Record<string, number> = {
         tempature: Math.pow(item.tempature, normalizeDataObj.tempature.value),
         turbidity: Math.pow(item.turbidity, normalizeDataObj.turbidity.value),

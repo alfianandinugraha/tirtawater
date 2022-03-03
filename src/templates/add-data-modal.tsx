@@ -1,5 +1,6 @@
 import Modal from "@/components/modal";
 import TextField from "@/components/text-field";
+import useDataset from "@/store/use-dataset";
 import { Button, HStack, useBoolean, VStack } from "@chakra-ui/react";
 import { FieldValues, useForm } from "react-hook-form";
 import { BsPlusLg } from "react-icons/bs";
@@ -10,7 +11,8 @@ type AddDataModalProps = {
 };
 
 const AddDataModal = (props: AddDataModalProps) => {
-  const { control, handleSubmit } = useForm<FieldValues>({
+  const pushData = useDataset((store) => store.push);
+  const { control, handleSubmit, getValues } = useForm<FieldValues>({
     defaultValues: {
       name: "Kaliurang",
       temprature: "15",
@@ -21,6 +23,14 @@ const AddDataModal = (props: AddDataModalProps) => {
   });
 
   const submit = () => {
+    const body = getValues();
+    pushData({
+      name: body.name,
+      tempature: +body.temprature,
+      turbidity: +body.turbidity,
+      solid: +body.solid,
+      distance: +body.distance,
+    });
     props.onClose();
   };
 

@@ -6,9 +6,11 @@ import DashboardLayout from "@/layouts/dashboard";
 import { FiFilePlus } from "react-icons/fi";
 import { Button, useBoolean } from "@chakra-ui/react";
 import AddDataModal from "@/templates/add-data-modal";
+import useDataset from "@/store/use-dataset";
 
 const DatasetPage = () => {
   const [isModalShow, modalController] = useBoolean(false);
+  const dataset = useDataset((store) => store.rivers);
   useTitlePage("Dataset");
 
   return (

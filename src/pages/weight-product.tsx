@@ -7,6 +7,7 @@ import dataset from "@/data/dataset";
 import useTitlePage from "@/hooks/use-title-page";
 import useWeightProduct from "@/hooks/use-weight-product";
 import DashboardLayout from "@/layouts/dashboard";
+import useDataset from "@/store/use-dataset";
 import { HStack } from "@chakra-ui/layout";
 import { useState } from "react";
 
@@ -40,7 +41,8 @@ const chipMenu = [
 const WeightProductPage = () => {
   useTitlePage("Weight Product");
   const [activeChip, setActiveChip] = useState(chipMenu[0]);
-  const calculate = useWeightProduct({ dataset });
+  const dataset = useDataset((store) => store.rivers);
+  const calculate = useWeightProduct();
 
   return (
     <DashboardLayout title="Weight Product Method">
