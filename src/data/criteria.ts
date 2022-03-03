@@ -3,25 +3,29 @@ enum attribute {
   BENEFIT,
 }
 
-const criteriaWP = {
-  tempature: {
+const criteriaWP = [
+  {
+    criteria: "tempature",
     attribute: attribute.BENEFIT,
     weight: 2,
   },
-  turbidity: {
+  {
+    criteria: "turbidity",
     attribute: attribute.BENEFIT,
     weight: 3,
   },
-  solid: {
+  {
+    criteria: "solid",
     attribute: attribute.BENEFIT,
     weight: 4,
   },
-  distance: {
+  {
+    criteria: "distance",
     attribute: attribute.COST,
     weight: 3,
   },
-};
+];
 
 const criteriaSAW = {};
 
-export { criteriaWP, criteriaSAW };
+export { criteriaWP, criteriaSAW, attribute };
