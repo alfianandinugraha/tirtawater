@@ -18,11 +18,11 @@ const chipMenu = [
   },
   {
     text: "Normalize Weight",
-    value: "NORMALIZE",
+    value: "NORMALIZE_WEIGHT",
   },
   {
-    text: "Search S",
-    value: "SEARCH",
+    text: "Normalize Data",
+    value: "NORMALIZE_DATA",
   },
   {
     text: "Ranking",
@@ -56,10 +56,10 @@ const WeightProductPage = () => {
       {activeChip.value === "CALCULATE" ? (
         <DataTable {...calculate.calculateWeight} />
       ) : null}
-      {activeChip.value === "NORMALIZE" ? (
+      {activeChip.value === "NORMALIZE_WEIGHT" ? (
         <DataTable {...calculate.normalizeWeight} />
       ) : null}
-      {activeChip.value === "SEARCH" ? (
+      {activeChip.value === "NORMALIZE_DATA" ? (
         <DataTable {...calculate.normalizeData} />
       ) : null}
     </DashboardLayout>

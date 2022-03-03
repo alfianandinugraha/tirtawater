@@ -1,20 +1,32 @@
 import { Column } from "react-table";
 import { River } from "type";
-import { attribute } from "./criteria";
+import { attribute } from "../criteria";
 
-type WeightProps = {
+type WeightDataProps = {
   criteria: string;
   attribute: attribute;
   value: number;
 };
 
-type WeightTableProps = {
-  criteria: string;
-  attribute: string;
-  value: string;
-};
+const calculateWeightColumns: ReadonlyArray<Column<WeightDataProps>> = [
+  {
+    Header: "Criteria",
+    accessor: "criteria",
+    width: "33%",
+  },
+  {
+    Header: "Attribute",
+    accessor: "attribute",
+    width: "33%",
+  },
+  {
+    Header: "Weight",
+    accessor: "value",
+    width: "33%",
+  },
+];
 
-const datasetColumns: ReadonlyArray<Column<River>> = [
+const normalizeDataColumns: ReadonlyArray<Column<River>> = [
   {
     Header: "No",
     accessor: "no",
@@ -47,23 +59,5 @@ const datasetColumns: ReadonlyArray<Column<River>> = [
   },
 ];
 
-const calculateWeightColumns: ReadonlyArray<Column<WeightTableProps>> = [
-  {
-    Header: "Criteria",
-    accessor: "criteria",
-    width: "33%",
-  },
-  {
-    Header: "Attribute",
-    accessor: "attribute",
-    width: "33%",
-  },
-  {
-    Header: "Weight",
-    accessor: "value",
-    width: "33%",
-  },
-];
-
-export { datasetColumns, calculateWeightColumns };
-export type { WeightProps };
+export { calculateWeightColumns, normalizeDataColumns };
+export type { WeightDataProps };

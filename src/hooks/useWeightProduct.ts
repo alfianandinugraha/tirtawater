@@ -1,10 +1,10 @@
 import {
-  WeightProps,
   calculateWeightColumns,
-  datasetColumns,
-} from "@/data/columns";
+  WeightDataProps,
+  normalizeDataColumns,
+} from "@/data/columns/product-weight";
 import { attribute, criteriaWP } from "@/data/criteria";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { River } from "type";
 
 type UseWeightProductProps = {
@@ -12,45 +12,13 @@ type UseWeightProductProps = {
 };
 
 const useWeightProduct = (props: UseWeightProductProps) => {
-  const [calculateWeightData, setCalculateWeightData] = useState<WeightProps[]>(
-    []
-  );
-  const [normalizeWeightData, setNormalizeWeightData] = useState<WeightProps[]>(
-    []
-  );
-  const [normalizeData, setNormalizeData] = useState<any[]>([]);
-
-  const calculateWightTableData = useMemo(() => {
-    return calculateWeightData.map((item) => {
-      return {
-        ...item,
-        value: item.value.toFixed(3),
-        attribute: item.attribute === attribute.BENEFIT ? "BENEFIT" : "COST",
-      };
-    });
-  }, [calculateWeightData]);
-
-  const normalizeWightTableData = useMemo(() => {
-    return normalizeWeightData.map((item) => {
-      return {
-        ...item,
-        value: item.value.toFixed(3),
-        attribute: item.attribute === attribute.BENEFIT ? "BENEFIT" : "COST",
-      };
-    });
-  }, [normalizeWeightData]);
-
-  const normalizeDataTableData = useMemo(() => {
-    return normalizeData.map((item) => {
-      return {
-        ...item,
-        tempature: item.tempature.toFixed(3),
-        turbidity: item.turbidity.toFixed(3),
-        solid: item.solid.toFixed(3),
-        distance: item.distance.toFixed(3),
-      };
-    });
-  }, [normalizeData]);
+  const [calculateWeightData, setCalculateWeightData] = useState<
+    WeightDataProps[]
+  >([]);
+  const [normalizeWeightData, setNormalizeWeightData] = useState<
+    WeightDataProps[]
+  >([]);
+  const [normalizeData, setNormalizeData] = useState<River[]>([]);
 
   useEffect(() => {
     const totalWeight = criteriaWP.reduce(
@@ -88,31 +56,26 @@ const useWeightProduct = (props: UseWeightProductProps) => {
       return {
         ...item,
         ...criteria,
-        total: Object.keys(criteria).reduce(
-          (prev, curr) => prev * criteria[curr],
-          1
-        ),
       };
     });
 
     setNormalizeData(datasetRank);
     setCalculateWeightData(weightData);
     setNormalizeWeightData(normalizeWeightData);
-    console.log(datasetRank);
   }, []);
 
   return {
     calculateWeight: {
       columns: calculateWeightColumns,
-      data: calculateWightTableData,
+      data: calculateWeightData,
     },
     normalizeWeight: {
       columns: calculateWeightColumns,
-      data: normalizeWightTableData,
+      data: normalizeWeightData,
     },
     normalizeData: {
-      columns: datasetColumns as any,
-      data: normalizeDataTableData,
+      columns: normalizeDataColumns,
+      data: normalizeData,
     },
   };
 };
