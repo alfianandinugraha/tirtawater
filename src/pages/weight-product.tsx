@@ -59,6 +59,9 @@ const WeightProductPage = () => {
       {activeChip.value === "NORMALIZE" ? (
         <DataTable {...calculate.normalizeWeight} />
       ) : null}
+      {activeChip.value === "SEARCH" ? (
+        <DataTable {...calculate.normalizeData} />
+      ) : null}
     </DashboardLayout>
   );
 };
