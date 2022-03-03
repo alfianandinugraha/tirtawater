@@ -62,6 +62,9 @@ const WeightProductPage = () => {
       {activeChip.value === "NORMALIZE_DATA" ? (
         <DataTable {...calculate.normalizeData} />
       ) : null}
+      {activeChip.value === "RANKING" ? (
+        <DataTable {...calculate.rankData} />
+      ) : null}
     </DashboardLayout>
   );
 };

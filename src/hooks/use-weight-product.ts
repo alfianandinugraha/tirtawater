@@ -2,6 +2,8 @@ import {
   calculateWeightColumns,
   WeightDataProps,
   normalizeDataColumns,
+  RankRiverDataProps,
+  rankingRiverColumns,
 } from "@/data/columns/product-weight";
 import { attribute, criteriaWP } from "@/data/criteria";
 import { useEffect, useState } from "react";
@@ -19,6 +21,7 @@ const useWeightProduct = (props: UseWeightProductProps) => {
     WeightDataProps[]
   >([]);
   const [normalizeData, setNormalizeData] = useState<River[]>([]);
+  const [rankData, setRankData] = useState<RankRiverDataProps[]>([]);
 
   useEffect(() => {
     const totalWeight = criteriaWP.reduce(
@@ -46,7 +49,7 @@ const useWeightProduct = (props: UseWeightProductProps) => {
       normalizeDataObj[item.criteria] = { ...item };
     });
 
-    const datasetRank = props.dataset.map((item) => {
+    const newNormalizeData = props.dataset.map((item) => {
       const criteria: Record<string, number> = {
         tempature: Math.pow(item.tempature, normalizeDataObj.tempature.value),
         turbidity: Math.pow(item.turbidity, normalizeDataObj.turbidity.value),
@@ -59,9 +62,48 @@ const useWeightProduct = (props: UseWeightProductProps) => {
       };
     });
 
-    setNormalizeData(datasetRank);
+    let newRankData = newNormalizeData.map<RankRiverDataProps>((item) => {
+      const criteria: Record<string, number> = {
+        tempature: item.tempature,
+        turbidity: item.turbidity,
+        solid: item.solid,
+        distance: item.distance,
+      };
+
+      return {
+        ...item,
+        rank: 1,
+        total: Object.keys(criteria).reduce(
+          (prev, curr) => prev * criteria[curr],
+          1
+        ),
+      };
+    });
+
+    var sorted = newRankData.slice().sort(function (a, b) {
+      return b.total - a.total;
+    });
+    var ranks = newRankData.map(function (v) {
+      return sorted.indexOf(v) + 1;
+    });
+    newRankData = ranks.map<RankRiverDataProps>((rank, idx) => {
+      return {
+        ...newRankData[idx],
+        rank,
+      };
+    });
+    newRankData = newRankData.map((item) => {
+      const isRankFound = newRankData.find((data) => data.total === item.total);
+      return {
+        ...item,
+        rank: isRankFound ? isRankFound.rank : item.rank,
+      };
+    });
+
+    setNormalizeData(newNormalizeData);
     setCalculateWeightData(weightData);
     setNormalizeWeightData(normalizeWeightData);
+    setRankData(newRankData);
   }, []);
 
   return {
@@ -76,6 +118,10 @@ const useWeightProduct = (props: UseWeightProductProps) => {
     normalizeData: {
       columns: normalizeDataColumns,
       data: normalizeData,
+    },
+    rankData: {
+      columns: rankingRiverColumns,
+      data: rankData,
     },
   };
 };

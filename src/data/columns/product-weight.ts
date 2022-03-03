@@ -8,6 +8,11 @@ type WeightDataProps = {
   value: number;
 };
 
+type RankRiverDataProps = Pick<River, "no" | "name"> & {
+  rank: number;
+  total: number;
+};
+
 const calculateWeightColumns: ReadonlyArray<Column<WeightDataProps>> = [
   {
     Header: "Criteria",
@@ -59,5 +64,28 @@ const normalizeDataColumns: ReadonlyArray<Column<River>> = [
   },
 ];
 
-export { calculateWeightColumns, normalizeDataColumns };
-export type { WeightDataProps };
+const rankingRiverColumns: ReadonlyArray<Column<RankRiverDataProps>> = [
+  {
+    Header: "No",
+    accessor: "no",
+    width: "10%",
+  },
+  {
+    Header: "River Name",
+    accessor: "name",
+    width: "30%",
+  },
+  {
+    Header: "Total",
+    accessor: "total",
+    width: "30%",
+  },
+  {
+    Header: "Rank",
+    accessor: "rank",
+    width: "30%",
+  },
+];
+
+export { calculateWeightColumns, normalizeDataColumns, rankingRiverColumns };
+export type { WeightDataProps, RankRiverDataProps };
