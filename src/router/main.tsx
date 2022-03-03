@@ -1,4 +1,4 @@
-import WeightProductPage from "@/pages/weight-product-page";
+import WeightProductPage from "@/pages/weight-product";
 
 const mainRouter = [
   {
