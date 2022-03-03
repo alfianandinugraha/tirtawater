@@ -5,7 +5,7 @@ import useTitlePage from "@/hooks/use-title-page";
 import DashboardLayout from "@/layouts/dashboard";
 import { FiFilePlus } from "react-icons/fi";
 import { Button, useBoolean } from "@chakra-ui/react";
-import AddDataModal from "@/template/add-data-modal";
+import AddDataModal from "@/templates/add-data-modal";
 
 const DatasetPage = () => {
   const [isModalShow, modalController] = useBoolean(false);
