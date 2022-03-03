@@ -56,7 +56,6 @@ function DataTable<T extends object>(props: DataTableProps<T>) {
               <Tr {...row.getRowProps()}>
                 {row.cells.map((cell) => {
                   const { value } = cell;
-                  console.log(cell);
                   return (
                     <Td {...cell.getCellProps()} w={cell.column.width}>
                       {!isNaN(value)
