@@ -1,15 +1,11 @@
 import Chip from "@/components/chip";
 import DataTable from "@/components/data-table";
-import {
-  calculateWeightColumns,
-  datasetColumns,
-  WeightProps,
-} from "@/data/columns";
-import { criteriaWP, attribute } from "@/data/criteria";
+import { datasetColumns } from "@/data/columns";
 import dataset from "@/data/dataset";
+import useWeightProduct from "@/hooks/useWeightProduct";
 import DashboardLayout from "@/layouts/dashboard";
 import { HStack } from "@chakra-ui/layout";
-import { useEffect, useMemo, useState } from "react";
+import { useState } from "react";
 
 const chipMenu = [
   {
@@ -36,57 +32,7 @@ const chipMenu = [
 
 const WeightProductPage = () => {
   const [activeChip, setActiveChip] = useState(chipMenu[0]);
-  const [calculateWeightData, setCalculateWeightData] = useState<WeightProps[]>(
-    []
-  );
-  const [normalizeWeightData, setNormalizeWeightData] = useState<WeightProps[]>(
-    []
-  );
-
-  useEffect(() => {
-    const totalWeight = criteriaWP.reduce(
-      (prev, curr) => prev + curr.weight,
-      0
-    );
-    const weightData = criteriaWP.map((item) => {
-      return {
-        ...item,
-        value: item.weight / totalWeight,
-      };
-    });
-    const normalizeData = weightData.map((item) => {
-      return {
-        ...item,
-        value:
-          item.attribute === attribute.BENEFIT
-            ? 1 * item.value
-            : -1 * item.value,
-      };
-    });
-
-    setCalculateWeightData(weightData);
-    setNormalizeWeightData(normalizeData);
-  }, []);
-
-  const calculateWightTableData = useMemo(() => {
-    return calculateWeightData.map((item) => {
-      return {
-        ...item,
-        value: item.value.toFixed(3),
-        attribute: item.attribute === attribute.BENEFIT ? "BENEFIT" : "COST",
-      };
-    });
-  }, [calculateWeightData]);
-
-  const normalizeWightTableData = useMemo(() => {
-    return normalizeWeightData.map((item) => {
-      return {
-        ...item,
-        value: item.value.toFixed(3),
-        attribute: item.attribute === attribute.BENEFIT ? "BENEFIT" : "COST",
-      };
-    });
-  }, [normalizeWeightData]);
+  const calculate = useWeightProduct({ dataset });
 
   return (
     <DashboardLayout title="Weight Product Method">
@@ -108,16 +54,10 @@ const WeightProductPage = () => {
         <DataTable data={dataset} columns={datasetColumns} />
       ) : null}
       {activeChip.value === "CALCULATE" ? (
-        <DataTable
-          data={calculateWightTableData}
-          columns={calculateWeightColumns}
-        />
+        <DataTable {...calculate.calculateWeight} />
       ) : null}
       {activeChip.value === "NORMALIZE" ? (
-        <DataTable
-          data={normalizeWightTableData}
-          columns={calculateWeightColumns}
-        />
+        <DataTable {...calculate.normalizeWeight} />
       ) : null}
     </DashboardLayout>
   );
