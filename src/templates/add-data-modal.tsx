@@ -26,7 +26,7 @@ const AddDataModal = (props: AddDataModalProps) => {
     const body = getValues();
     pushData({
       name: body.name,
-      tempature: +body.temprature,
+      temprature: +body.temprature,
       turbidity: +body.turbidity,
       solid: +body.solid,
       distance: +body.distance,

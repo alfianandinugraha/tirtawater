@@ -14,7 +14,7 @@ const datasetColumns: ReadonlyArray<Column<River>> = [
   },
   {
     Header: "Temprature",
-    accessor: "tempature",
+    accessor: "temprature",
     width: "17.5%",
   },
   {
