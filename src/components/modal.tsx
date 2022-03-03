@@ -1,4 +1,4 @@
-import { Box, Heading, HStack, VStack } from "@chakra-ui/react";
+import { Box, Heading, HStack } from "@chakra-ui/react";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import React from "react";
 import ReactDOM from "react-dom";

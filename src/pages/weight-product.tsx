@@ -3,7 +3,6 @@ import DataTable from "@/components/data-table";
 import { datasetColumns } from "@/data/columns";
 import { calculateWeightColumns } from "@/data/columns/product-weight";
 import { criteriaWP } from "@/data/criteria";
-import dataset from "@/data/dataset";
 import useTitlePage from "@/hooks/use-title-page";
 import useWeightProduct from "@/hooks/use-weight-product";
 import DashboardLayout from "@/layouts/dashboard";

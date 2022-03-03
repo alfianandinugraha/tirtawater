@@ -1,4 +1,3 @@
-import { Container, Heading } from "@chakra-ui/layout";
 import { ReactLocation, Router } from "react-location";
 import mainRouter from "./router/main";
 

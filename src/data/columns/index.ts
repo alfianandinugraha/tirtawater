@@ -1,6 +1,5 @@
 import { Column } from "react-table";
 import { River } from "type";
-import { attribute } from "../criteria";
 
 const datasetColumns: ReadonlyArray<Column<River>> = [
   {

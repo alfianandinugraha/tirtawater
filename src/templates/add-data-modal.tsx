@@ -1,7 +1,7 @@
 import Modal from "@/components/modal";
 import TextField from "@/components/text-field";
 import useDataset from "@/store/use-dataset";
-import { Button, HStack, useBoolean, VStack } from "@chakra-ui/react";
+import { Button, HStack, VStack } from "@chakra-ui/react";
 import { FieldValues, useForm } from "react-hook-form";
 import { BsPlusLg } from "react-icons/bs";
 

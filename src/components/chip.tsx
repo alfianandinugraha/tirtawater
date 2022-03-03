@@ -1,5 +1,4 @@
 import { Box, Text } from "@chakra-ui/layout";
-import React from "react";
 
 type ChipProps = {
   text: string;
