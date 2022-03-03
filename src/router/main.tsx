@@ -1,9 +1,14 @@
+import DatasetPage from "@/pages/dataset";
 import WeightProductPage from "@/pages/weight-product";
 
 const mainRouter = [
   {
-    path: "",
+    path: "weight-product",
     element: <WeightProductPage />,
+  },
+  {
+    path: "",
+    element: <DatasetPage />,
   },
 ];
 

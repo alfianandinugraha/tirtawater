@@ -3,15 +3,29 @@ import { BiData } from "react-icons/bi";
 import { FaWeight } from "react-icons/fa";
 import { GiWeightCrush } from "react-icons/gi";
 import { IconType } from "react-icons/lib";
+import { useNavigate } from "react-location";
 
 type LinkProps = {
   icon: IconType;
   text: string;
+  to: string;
 };
 
 const Link = (props: LinkProps) => {
+  const navigate = useNavigate();
+
+  const onClick = () => {
+    navigate({ to: props.to, replace: true });
+  };
+
   return (
-    <HStack display="flex" alignItems="center" spacing="2" cursor="pointer">
+    <HStack
+      display="flex"
+      alignItems="center"
+      spacing="2"
+      cursor="pointer"
+      onClick={onClick}
+    >
       <props.icon size={20} />
       <Text>{props.text}</Text>
     </HStack>
@@ -37,14 +51,18 @@ const Sidebar = () => {
         Main
       </Text>
       <VStack spacing="4" alignItems="start">
-        <Link icon={BiData} text="Dataset" />
+        <Link icon={BiData} text="Dataset" to="/" />
       </VStack>
       <Divider my="4" />
       <Text textTransform="uppercase" opacity="75" mb="3" fontWeight="bold">
         Method
       </Text>
       <VStack spacing="4" alignItems="start">
-        <Link icon={GiWeightCrush} text="Weight Product Method" />
+        <Link
+          icon={GiWeightCrush}
+          text="Weight Product Method"
+          to="/weight-product"
+        />
       </VStack>
     </Box>
   );

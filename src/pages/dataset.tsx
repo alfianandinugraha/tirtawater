@@ -1,12 +1,12 @@
 import DashboardLayout from "@/layouts/dashboard";
 import { Box } from "@chakra-ui/layout";
 
-const WeightProductPage = () => {
+const DatasetPage = () => {
   return (
-    <DashboardLayout title="Weight Product Method">
+    <DashboardLayout title="Dataset">
       <Box>Hello</Box>
     </DashboardLayout>
   );
 };
 
-export default WeightProductPage;
+export default DatasetPage;
