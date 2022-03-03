@@ -2,7 +2,7 @@ import Chip from "@/components/chip";
 import DataTable from "@/components/data-table";
 import { datasetColumns } from "@/data/columns";
 import dataset from "@/data/dataset";
-import useWeightProduct from "@/hooks/useWeightProduct";
+import useWeightProduct from "@/hooks/use-weight-product";
 import DashboardLayout from "@/layouts/dashboard";
 import { HStack } from "@chakra-ui/layout";
 import { useState } from "react";
