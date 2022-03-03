@@ -1,6 +1,8 @@
 import Chip from "@/components/chip";
 import DataTable from "@/components/data-table";
 import { datasetColumns } from "@/data/columns";
+import { calculateWeightColumns } from "@/data/columns/product-weight";
+import { criteriaWP } from "@/data/criteria";
 import dataset from "@/data/dataset";
 import useWeightProduct from "@/hooks/use-weight-product";
 import DashboardLayout from "@/layouts/dashboard";
@@ -13,11 +15,15 @@ const chipMenu = [
     value: "DATASET",
   },
   {
-    text: "Calculate Weight",
+    text: "Criteria",
+    value: "CRITERIA",
+  },
+  {
+    text: "Calculate Criteria Weight",
     value: "CALCULATE",
   },
   {
-    text: "Normalize Weight",
+    text: "Normalize Criteria Weight",
     value: "NORMALIZE_WEIGHT",
   },
   {
@@ -52,6 +58,12 @@ const WeightProductPage = () => {
       </HStack>
       {activeChip.value === "DATASET" ? (
         <DataTable data={dataset} columns={datasetColumns} />
+      ) : null}
+      {activeChip.value === "CRITERIA" ? (
+        <DataTable
+          data={criteriaWP.map((item) => ({ ...item, value: item.weight }))}
+          columns={calculateWeightColumns}
+        />
       ) : null}
       {activeChip.value === "CALCULATE" ? (
         <DataTable {...calculate.calculateWeight} />
