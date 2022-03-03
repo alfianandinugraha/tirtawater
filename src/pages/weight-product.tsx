@@ -4,6 +4,7 @@ import { datasetColumns } from "@/data/columns";
 import { calculateWeightColumns } from "@/data/columns/product-weight";
 import { criteriaWP } from "@/data/criteria";
 import dataset from "@/data/dataset";
+import useTitlePage from "@/hooks/use-title-page";
 import useWeightProduct from "@/hooks/use-weight-product";
 import DashboardLayout from "@/layouts/dashboard";
 import { HStack } from "@chakra-ui/layout";
@@ -37,6 +38,7 @@ const chipMenu = [
 ];
 
 const WeightProductPage = () => {
+  useTitlePage("Weight Product");
   const [activeChip, setActiveChip] = useState(chipMenu[0]);
   const calculate = useWeightProduct({ dataset });
 
