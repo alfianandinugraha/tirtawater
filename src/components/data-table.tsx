@@ -55,9 +55,15 @@ function DataTable<T extends object>(props: DataTableProps<T>) {
             return (
               <Tr {...row.getRowProps()}>
                 {row.cells.map((cell) => {
+                  const { value } = cell;
+                  console.log(cell);
                   return (
                     <Td {...cell.getCellProps()} w={cell.column.width}>
-                      {cell.render("Cell")}
+                      {!isNaN(value)
+                        ? Number.isInteger(value)
+                          ? value
+                          : value.toFixed(3)
+                        : cell.render("Cell")}
                     </Td>
                   );
                 })}
