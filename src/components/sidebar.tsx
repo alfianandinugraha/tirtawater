@@ -51,12 +51,14 @@ const Sidebar = () => {
         bg="white"
         color="blue.400"
         boxShadow="lg"
+        width="full"
+        justifyContent="start"
       >
         <a
           target="_blank"
           href="https://github.com/alfianandinugraha/tirtawater"
         >
-          Download Source-code
+          Source Code
         </a>
       </Button>
       <Divider my="4" />
