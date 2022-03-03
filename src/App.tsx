@@ -1,11 +1,11 @@
 import { Container, Heading } from "@chakra-ui/layout";
+import { ReactLocation, Router } from "react-location";
+import mainRouter from "./router/main";
+
+const reactLocation = new ReactLocation();
 
 function App() {
-  return (
-    <Container className="App">
-      <Heading as="h1">Hello</Heading>
-    </Container>
-  );
+  return <Router routes={mainRouter} location={reactLocation} />;
 }
 
 export default App;
