@@ -9,7 +9,7 @@ type DashboardLayoutProps = {
 
 const DashboardLayout = (props: DashboardLayoutProps) => {
   return (
-    <Box display="flex">
+    <Box display="flex" alignItems="stretch" minH="100vh">
       <Sidebar />
       <Box as="main" p="8" bg="gray.50" width="full">
         <Box bg="white" p="6" boxShadow="md" borderRadius="md">

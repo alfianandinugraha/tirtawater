@@ -36,7 +36,6 @@ const Sidebar = () => {
   return (
     <Box
       as="aside"
-      h="100vh"
       bgColor="blue.400"
       w="80"
       color="white"
