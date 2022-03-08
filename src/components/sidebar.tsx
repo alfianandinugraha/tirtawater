@@ -78,6 +78,7 @@ const Sidebar = () => {
           text="Weight Product Method"
           to="/weight-product"
         />
+        <Link icon={GiWeightCrush} text="TOPSIS Method" to="/topsis" />
       </VStack>
     </Box>
   );
