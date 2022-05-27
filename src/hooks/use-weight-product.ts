@@ -18,7 +18,9 @@ const useWeightProduct = () => {
   const [normalizeWeightData, setNormalizeWeightData] = useState<
     WeightDataProps[]
   >([]);
-  const [normalizeData, setNormalizeData] = useState<River[]>([]);
+  const [normalizeData, setNormalizeData] = useState<
+    (River & { valueS: number })[]
+  >([]);
   const [rankData, setRankData] = useState<RankRiverDataProps[]>([]);
 
   useEffect(() => {
@@ -62,31 +64,31 @@ const useWeightProduct = () => {
       return {
         ...item,
         ...criteria,
-      };
-    });
-
-    let newRankData = newNormalizeData.map<RankRiverDataProps>((item) => {
-      const criteria: Record<string, number> = {
-        temprature: item.temprature,
-        turbidity: item.turbidity,
-        solid: item.solid,
-        distance: item.distance,
-        terrain: item.terrain,
-        debit: item.debit,
-      };
-
-      return {
-        ...item,
-        rank: 1,
-        total: Object.keys(criteria).reduce(
+        valueS: Object.keys(criteria).reduce(
           (prev, curr) => prev * criteria[curr],
           1
         ),
       };
     });
 
+    const totalValueS = newNormalizeData.reduce(
+      (prev, curr) => prev + curr.valueS,
+      0
+    );
+
+    console.log("Total value S", totalValueS);
+
+    let newRankData = newNormalizeData.map<RankRiverDataProps>((item) => {
+      return {
+        ...item,
+        rank: 1,
+        total: item.valueS,
+        valueV: item.valueS / totalValueS,
+      };
+    });
+
     var sorted = newRankData.slice().sort(function (a, b) {
-      return b.total - a.total;
+      return b.valueV - a.valueV;
     });
     var ranks = newRankData.map(function (v) {
       return sorted.indexOf(v) + 1;
