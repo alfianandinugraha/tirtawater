@@ -6,6 +6,8 @@ const dataset = [
     turbidity: 4,
     solid: 750,
     distance: 20,
+    terrain: 7,
+    debit: 38,
   },
   {
     no: 2,
@@ -14,6 +16,8 @@ const dataset = [
     turbidity: 1,
     solid: 245,
     distance: 900,
+    terrain: 1,
+    debit: 43,
   },
   {
     no: 3,
@@ -22,6 +26,8 @@ const dataset = [
     turbidity: 2,
     solid: 300,
     distance: 210,
+    terrain: 9,
+    debit: 27,
   },
   {
     no: 4,
@@ -30,6 +36,8 @@ const dataset = [
     turbidity: 5,
     solid: 550,
     distance: 500,
+    terrain: 6,
+    debit: 5,
   },
   {
     no: 5,
@@ -38,6 +46,8 @@ const dataset = [
     turbidity: 1,
     solid: 805,
     distance: 150,
+    terrain: 7,
+    debit: 42,
   },
   {
     no: 6,
@@ -46,6 +56,8 @@ const dataset = [
     turbidity: 3,
     solid: 700,
     distance: 300,
+    terrain: 3,
+    debit: 43,
   },
   {
     no: 7,
@@ -54,6 +66,8 @@ const dataset = [
     turbidity: 4,
     solid: 900,
     distance: 410,
+    terrain: 8,
+    debit: 16,
   },
   {
     no: 8,
@@ -62,6 +76,8 @@ const dataset = [
     turbidity: 2,
     solid: 400,
     distance: 200,
+    terrain: 3,
+    debit: 42,
   },
   {
     no: 9,
@@ -70,6 +86,8 @@ const dataset = [
     turbidity: 1,
     solid: 150,
     distance: 220,
+    terrain: 2,
+    debit: 33,
   },
   {
     no: 10,
@@ -78,6 +96,8 @@ const dataset = [
     turbidity: 4,
     solid: 950,
     distance: 230,
+    terrain: 1,
+    debit: 41,
   },
   {
     no: 11,
@@ -86,6 +106,8 @@ const dataset = [
     turbidity: 5,
     solid: 1000,
     distance: 120,
+    terrain: 1,
+    debit: 40,
   },
   {
     no: 12,
@@ -94,6 +116,8 @@ const dataset = [
     turbidity: 2,
     solid: 315,
     distance: 650,
+    terrain: 3,
+    debit: 28,
   },
   {
     no: 13,
@@ -102,6 +126,8 @@ const dataset = [
     turbidity: 1,
     solid: 140,
     distance: 170,
+    terrain: 9,
+    debit: 45,
   },
   {
     no: 14,
@@ -110,6 +136,8 @@ const dataset = [
     turbidity: 2,
     solid: 230,
     distance: 120,
+    terrain: 5,
+    debit: 25,
   },
   {
     no: 15,
@@ -118,6 +146,8 @@ const dataset = [
     turbidity: 4,
     solid: 425,
     distance: 470,
+    terrain: 3,
+    debit: 11,
   },
   {
     no: 16,
@@ -126,6 +156,8 @@ const dataset = [
     turbidity: 1,
     solid: 200,
     distance: 200,
+    terrain: 9,
+    debit: 46,
   },
   {
     no: 17,
@@ -134,6 +166,8 @@ const dataset = [
     turbidity: 3,
     solid: 600,
     distance: 550,
+    terrain: 6,
+    debit: 5,
   },
   {
     no: 18,
@@ -142,6 +176,8 @@ const dataset = [
     turbidity: 2,
     solid: 400,
     distance: 300,
+    terrain: 6,
+    debit: 24,
   },
   {
     no: 19,
@@ -150,6 +186,8 @@ const dataset = [
     turbidity: 5,
     solid: 880,
     distance: 700,
+    terrain: 1,
+    debit: 9,
   },
   {
     no: 20,
@@ -158,6 +196,8 @@ const dataset = [
     turbidity: 1,
     solid: 220,
     distance: 238,
+    terrain: 1,
+    debit: 47,
   },
 ];
 

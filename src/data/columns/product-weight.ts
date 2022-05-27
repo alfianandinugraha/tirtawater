@@ -62,6 +62,16 @@ const normalizeDataColumns: ReadonlyArray<Column<River>> = [
     accessor: "distance",
     width: "17.5%",
   },
+  {
+    Header: "Terrain",
+    accessor: "terrain",
+    width: "17.5%",
+  },
+  {
+    Header: "Debit",
+    accessor: "debit",
+    width: "17.5%",
+  },
 ];
 
 const rankingRiverColumns: ReadonlyArray<Column<RankRiverDataProps>> = [

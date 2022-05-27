@@ -56,6 +56,8 @@ const useWeightProduct = () => {
         turbidity: Math.pow(item.turbidity, normalizeDataObj.turbidity.value),
         solid: Math.pow(item.solid, normalizeDataObj.solid.value),
         distance: Math.pow(item.distance, normalizeDataObj.distance.value),
+        terrain: Math.pow(item.terrain, normalizeDataObj.terrain.value),
+        debit: Math.pow(item.debit, normalizeDataObj.debit.value),
       };
       return {
         ...item,
@@ -69,6 +71,8 @@ const useWeightProduct = () => {
         turbidity: item.turbidity,
         solid: item.solid,
         distance: item.distance,
+        terrain: item.terrain,
+        debit: item.debit,
       };
 
       return {

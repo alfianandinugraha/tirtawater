@@ -24,6 +24,16 @@ const criteriaWP = [
     attribute: attribute.COST,
     weight: 3,
   },
+  {
+    criteria: "terrain",
+    attribute: attribute.COST,
+    weight: 3,
+  },
+  {
+    criteria: "debit",
+    attribute: attribute.BENEFIT,
+    weight: 2,
+  },
 ];
 
 const criteriaSAW = {};
