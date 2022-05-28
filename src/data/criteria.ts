@@ -6,17 +6,17 @@ enum attribute {
 const criteriaWP = [
   {
     criteria: "temprature",
-    attribute: attribute.BENEFIT,
+    attribute: attribute.COST,
     weight: 2,
   },
   {
     criteria: "turbidity",
-    attribute: attribute.BENEFIT,
+    attribute: attribute.COST,
     weight: 3,
   },
   {
     criteria: "solid",
-    attribute: attribute.BENEFIT,
+    attribute: attribute.COST,
     weight: 4,
   },
   {
