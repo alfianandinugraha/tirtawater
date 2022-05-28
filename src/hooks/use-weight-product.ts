@@ -24,16 +24,21 @@ const useWeightProduct = () => {
   const [rankData, setRankData] = useState<RankRiverDataProps[]>([]);
 
   useEffect(() => {
+    // Mencari total weight untuk dinormalisasi
     const totalWeight = criteriaWP.reduce(
       (prev, curr) => prev + curr.weight,
       0
     );
+
+    // mencari nilai Weight (W)
     const weightData = criteriaWP.map((item) => {
       return {
         ...item,
         value: item.weight / totalWeight,
       };
     });
+
+    // mencari nilai Weight (W) Ternormalisasi
     const normalizeWeightData = weightData.map((item) => {
       return {
         ...item,
@@ -49,6 +54,7 @@ const useWeightProduct = () => {
       normalizeDataObj[item.criteria] = { ...item };
     });
 
+    // Mencari nilai S ternormalisasi
     const newNormalizeData = dataset.map((item) => {
       const criteria: Record<string, number> = {
         temprature: Math.pow(
@@ -71,6 +77,7 @@ const useWeightProduct = () => {
       };
     });
 
+    // Mencarit total nilai S
     const totalValueS = newNormalizeData.reduce(
       (prev, curr) => prev + curr.valueS,
       0
@@ -78,6 +85,7 @@ const useWeightProduct = () => {
 
     console.log("Total value S", totalValueS);
 
+    // Mencari nilai V
     let newRankData = newNormalizeData.map<RankRiverDataProps>((item) => {
       return {
         ...item,
@@ -87,6 +95,7 @@ const useWeightProduct = () => {
       };
     });
 
+    // Melakukan perangkingan
     var sorted = newRankData.slice().sort(function (a, b) {
       return b.valueV - a.valueV;
     });
@@ -107,6 +116,7 @@ const useWeightProduct = () => {
       };
     });
 
+    // Memasukkan data kedalam user interface
     setNormalizeData(newNormalizeData);
     setCalculateWeightData(weightData);
     setNormalizeWeightData(normalizeWeightData);
