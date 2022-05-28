@@ -14,11 +14,13 @@ const AddDataModal = (props: AddDataModalProps) => {
   const pushData = useDataset((store) => store.push);
   const { control, handleSubmit, getValues } = useForm<FieldValues>({
     defaultValues: {
-      name: "Kaliurang",
-      temprature: "15",
-      turbidity: "4",
-      solid: "400",
-      distance: "500",
+      name: "",
+      temprature: "",
+      turbidity: "",
+      solid: "",
+      distance: "",
+      terrain: "",
+      debit: "",
     },
   });
 
@@ -30,6 +32,8 @@ const AddDataModal = (props: AddDataModalProps) => {
       turbidity: +body.turbidity,
       solid: +body.solid,
       distance: +body.distance,
+      terrain: +body.terrain,
+      debit: +body.debit,
     });
     props.onClose();
   };
@@ -92,6 +96,22 @@ const AddDataModal = (props: AddDataModalProps) => {
               control={control}
               name="distance"
               label="distance"
+              type="number"
+              rules={{ required: true }}
+            />
+          </VStack>
+          <VStack spacing="4" alignItems="unset">
+            <TextField
+              control={control}
+              name="terrain"
+              label="terrain"
+              type="number"
+              rules={{ required: true }}
+            />
+            <TextField
+              control={control}
+              name="debit"
+              label="debit"
               type="number"
               rules={{ required: true }}
             />

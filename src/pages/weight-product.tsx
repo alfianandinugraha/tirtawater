@@ -43,6 +43,8 @@ const WeightProductPage = () => {
   const dataset = useDataset((store) => store.rivers);
   const calculate = useWeightProduct();
 
+  console.log(calculate.normalizeData);
+
   return (
     <DashboardLayout title="Weight Product Method">
       <HStack spacing="2" mb={3}>

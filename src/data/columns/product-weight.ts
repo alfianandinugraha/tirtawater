@@ -11,6 +11,7 @@ type WeightDataProps = {
 type RankRiverDataProps = Pick<River, "no" | "name"> & {
   rank: number;
   total: number;
+  valueV: number;
 };
 
 const calculateWeightColumns: ReadonlyArray<Column<WeightDataProps>> = [
@@ -31,38 +32,54 @@ const calculateWeightColumns: ReadonlyArray<Column<WeightDataProps>> = [
   },
 ];
 
-const normalizeDataColumns: ReadonlyArray<Column<River>> = [
-  {
-    Header: "No",
-    accessor: "no",
-    width: "10%",
-  },
-  {
-    Header: "River Name",
-    accessor: "name",
-    width: "20%",
-  },
-  {
-    Header: "Temprature",
-    accessor: "temprature",
-    width: "17.5%",
-  },
-  {
-    Header: "Turbidity",
-    accessor: "turbidity",
-    width: "17.5%",
-  },
-  {
-    Header: "Solid",
-    accessor: "solid",
-    width: "17.5%",
-  },
-  {
-    Header: "Distance",
-    accessor: "distance",
-    width: "17.5%",
-  },
-];
+const normalizeDataColumns: ReadonlyArray<Column<River & { valueS: number }>> =
+  [
+    {
+      Header: "No",
+      accessor: "no",
+      width: "10%",
+    },
+    {
+      Header: "River Name",
+      accessor: "name",
+      width: "20%",
+    },
+    {
+      Header: "Temprature",
+      accessor: "temprature",
+      width: "17.5%",
+    },
+    {
+      Header: "Turbidity",
+      accessor: "turbidity",
+      width: "17.5%",
+    },
+    {
+      Header: "Solid",
+      accessor: "solid",
+      width: "17.5%",
+    },
+    {
+      Header: "Distance",
+      accessor: "distance",
+      width: "17.5%",
+    },
+    {
+      Header: "Terrain",
+      accessor: "terrain",
+      width: "17.5%",
+    },
+    {
+      Header: "Debit",
+      accessor: "debit",
+      width: "17.5%",
+    },
+    {
+      Header: "S",
+      accessor: "valueS",
+      width: "17.5%",
+    },
+  ];
 
 const rankingRiverColumns: ReadonlyArray<Column<RankRiverDataProps>> = [
   {
@@ -78,6 +95,11 @@ const rankingRiverColumns: ReadonlyArray<Column<RankRiverDataProps>> = [
   {
     Header: "Total",
     accessor: "total",
+    width: "30%",
+  },
+  {
+    Header: "V",
+    accessor: "valueV",
     width: "30%",
   },
   {

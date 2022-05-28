@@ -6,5 +6,7 @@ declare module "type" {
     turbidity: number;
     solid: number;
     distance: number;
+    terrain: number;
+    debit: number;
   };
 }
